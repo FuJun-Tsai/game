@@ -33,6 +33,43 @@ header{
     }
 }
 
+.players{
+    .info{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .player{
+            button{
+                display: inline;
+            }
+            h2{
+                display: inline;
+            }
+            .layout{
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-evenly;
+                .color{
+                    width: 24px;
+                    height: 24px;
+                }
+                h2{
+                    margin: 0;
+                    line-height: 1;
+                }
+            }
+        }
+        .player2{
+            text-align: right;
+            .color{
+                display: inline-block;
+            }
+        }
+   
+    }
+}
+
 .gameset{
     width: 100%;
     max-width: 400px;

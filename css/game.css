@@ -21,6 +21,56 @@ header h1 {
   text-shadow: -1px -1px 0px #000, 1px 1px 0px #000, 0px 0px 5px #fff, 0px 0px 10px #fff, 0px 0px 20px #fff, 0px 0px 40px #fff, 0px 0px 80px #fff;
 }
 
+.players .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.players .info .player button {
+  display: inline;
+}
+
+.players .info .player h2 {
+  display: inline;
+}
+
+.players .info .player .layout {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.players .info .player .layout .color {
+  width: 24px;
+  height: 24px;
+}
+
+.players .info .player .layout h2 {
+  margin: 0;
+  line-height: 1;
+}
+
+.players .info .player2 {
+  text-align: right;
+}
+
+.players .info .player2 .color {
+  display: inline-block;
+}
+
 .gameset {
   width: 100%;
   max-width: 400px;
@@ -36,7 +86,7 @@ header h1 {
   font-size: 20px;
 }
 
-main .row > div {
+.game .row > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,12 +102,12 @@ main .row > div {
           align-items: center;
 }
 
-main .bar .line > div {
+.game .bar .line > div {
   height: 4px;
   width: 40px;
 }
 
-main .bar .doc {
+.game .bar .doc {
   height: 4px;
   width: 4px;
   padding: 4px;
@@ -66,38 +116,38 @@ main .bar .doc {
   margin: 2px;
 }
 
-main .boxs .line > div {
+.game .boxs .line > div {
   height: 40px;
   width: 4px;
 }
 
-main .boxs .box {
+.game .boxs .box {
   width: 40px;
   height: 40px;
   margin: 4px;
 }
 
-main .boxs .box p {
+.game .boxs .box p {
   line-height: 40px;
   font-size: 40px;
   text-align: center;
   margin: 0;
 }
 
-main .line {
+.game .line {
   padding: 8px;
 }
 
-main .line:hover > div {
+.game .line:hover > div {
   background: gray;
 }
 
-main .line > div {
+.game .line > div {
   border: 1px solid gray;
   border-radius: 2px;
 }
 
-main .line.selected > div {
+.game .line.selected > div {
   background: black;
 }
 /*# sourceMappingURL=game.css.map */
