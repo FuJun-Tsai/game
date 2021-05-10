@@ -1,0 +1,115 @@
+$linelong : 40px;
+$linewidth : 4px;
+
+$player1color : red ;
+$player2color : blue ;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(180deg,orangered 0%,#fff 100%);
+    // box-shadow: 0px 0px 20px #111;
+    h1{
+        color: #fff;
+        font-size: 28px;
+        text-align: center;
+        text-shadow: 
+        -1px -1px 0px #000,
+        1px 1px 0px #000,
+        0px 0px 5px #fff,
+        0px 0px 10px #fff,
+        0px 0px 20px #fff,
+        0px 0px 40px #fff,
+        0px 0px 80px #fff,
+        ;
+    }
+}
+
+.gameset{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    button{
+        $buttonheight:32px;
+        height: $buttonheight;
+        width: 80%;
+        border-radius: $buttonheight/2;
+        margin-bottom: 20px;
+
+        font-size: 20px;
+    }
+}
+
+.game{
+
+    .row>div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bar{
+        .line{
+            >div{
+                height: $linewidth;
+                width: $linelong;
+            }
+        }
+        .doc{
+            height: $linewidth;
+            width: $linewidth;
+            padding: 4px;
+            background: black;
+            border-radius: 100%;
+            margin: 2px;
+        }
+    }
+
+    .boxs{
+        .line{
+            >div{
+                height: $linelong;
+                width: $linewidth;
+            }
+        }
+        .box{
+            width: $linelong;
+            height: $linelong;
+            margin: 4px;
+            p{
+                line-height: $linelong;
+                font-size: $linelong;
+                text-align: center;
+                margin: 0;
+            }
+        }
+    }
+
+    .line{
+        padding: 8px;
+        &:hover>div{
+            background: gray;
+        }
+        >div{
+            border: 1px solid gray;
+            border-radius: $linewidth/2;
+        }
+    }
+
+    .line.selected{
+        >div{
+            background:black;
+        }
+    }
+
+}
