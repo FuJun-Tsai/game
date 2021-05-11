@@ -80,14 +80,7 @@
 
 // };
 
-function boxWrite(arr){
-    let all = arr[0] && arr[1] && arr[2];
 
-    if (all) {
-        arr[3].innerHTML = `<p>${player[turn]}</p>`;
-        continuous = true;
-    };
-};
 
 // let lines = document.querySelectorAll('.line');
 

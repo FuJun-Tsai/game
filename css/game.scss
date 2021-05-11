@@ -1,11 +1,21 @@
 $linelong : 40px;
 $linewidth : 4px;
 
-$player1color : red ;
-$player2color : blue ;
-
 *{
     box-sizing: border-box;
+}
+
+:root{
+    --player1Color:red;
+    --player2Color:blue;
+}
+
+.player1{
+    color: var(--player1Color);
+}
+
+.player2{
+    color: var(--player2Color);
 }
 
 body{
@@ -40,6 +50,10 @@ header{
         flex-direction: row;
         justify-content: space-between;
         .player{
+            .changename{
+                width: 100px;
+                display: none;
+            }
             button{
                 display: inline;
             }

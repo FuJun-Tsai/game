@@ -3,6 +3,19 @@
           box-sizing: border-box;
 }
 
+:root {
+  --player1Color:red;
+  --player2Color:blue;
+}
+
+.player1 {
+  color: var(--player1Color);
+}
+
+.player2 {
+  color: var(--player2Color);
+}
+
 body {
   margin: 0;
 }
@@ -33,6 +46,11 @@ header h1 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.players .info .player .changename {
+  width: 100px;
+  display: none;
 }
 
 .players .info .player button {
