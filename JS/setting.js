@@ -50,9 +50,6 @@ function rendenWindow(){
     score1.style.color = data.player1.playerColor;
     score2.style.color = data.player2.playerColor;
 
-    // player1.style.color = data.player1.playerColor;
-    // player2.style.color = data.player2.playerColor;
-    
 }
 
 rendenWindow();
@@ -102,6 +99,11 @@ function changeColor(){
 function rendenTable(){
     side = parseInt(this.value);
     totalLine = (Math.pow(side,2)+side)*2;
+    scores = [0,0];
+    scoresBar.forEach(item=>{
+        console.log(item)
+        item.textContent = '0'
+    });
     game.innerHTML = '';
     for(let i=1; i<=side ;i+=1){
         game.innerHTML+=`
@@ -117,16 +119,8 @@ function rendenTable(){
     let bars = document.querySelectorAll('.bar');
     let boxs = document.querySelectorAll('.boxs');
 
-    // bars[0].innerHTML = `
-    //     <div class="doc"></div>
-    //     <div class="line" data-row="0" data-num="0">
-    //         <div></div>
-    //     </div>
-    //     <div class="doc"></div>
-    //     `;
     bars.forEach((item,index) => {
         for(let i=0; i<side ;i+=1){
-            // console.log(item,index);
             item.innerHTML+= `
                 <div class="doc"></div>
                 <div class="line" data-row="${index*2}" data-num="${i}">
@@ -144,7 +138,6 @@ function rendenTable(){
 
     boxs.forEach((item,index) => {
         for(let i=0; i<side ;i+=1){
-            // console.log(item,index);
             item.innerHTML+= `
                 <div class="line" data-row="${1+index*2}" data-num="${i}">
                     <div></div>
@@ -201,13 +194,8 @@ function boxJudge(row,num,section){
     let condition2 = [false,false,false,"target"];
 
     if(section === 'boxs'){
-        // console.log(num);
-        if(num!==0){
 
-            // console.log(row,num);
-            // console.log(document.querySelector(`[data-row="${row}"][data-num="${num-1}"]`));
-            // console.log(document.querySelector(`[data-row="${row-1}"][data-num="${num-1}"]`));
-            // console.log(document.querySelector(`[data-row="${row+1}"][data-num="${num-1}"]`));
+        if(num!==0){
 
             condition1 = [
                 document.querySelector(`[data-row="${row}"][data-num="${num-1}"]`).classList.contains('selected'),
@@ -220,12 +208,6 @@ function boxJudge(row,num,section){
         };
 
         if(num!==side){
-
-            // console.log(side);
-            // console.log(row,num);
-            // console.log(document.querySelector(`[data-row="${row}"][data-num="${num+1}"]`))
-            // console.log(document.querySelector(`[data-row="${row+1}"][data-num="${num}"]`))
-            // console.log(document.querySelector(`[data-row="${row-1}"][data-num="${num}"]`))
 
             condition2 = [
                 document.querySelector(`[data-row="${row}"][data-num="${num+1}"]`).classList.contains('selected'),
