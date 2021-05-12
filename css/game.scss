@@ -5,18 +5,18 @@ $linewidth : 4px;
     box-sizing: border-box;
 }
 
-// :root{
-//     --player1Color:red;
-//     --player2Color:blue;
-// }
+:root{
+    --player1Color:red;
+    --player2Color:blue;
+}
 
-// .player1{
-//     color: var(--player1Color);
-// }
+.player1{
+    color: var(--player1Color);
+}
 
-// .player2{
-//     color: var(--player2Color);
-// }
+.player2{
+    color: var(--player2Color);
+}
 
 body{
     margin: 0;
