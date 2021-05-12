@@ -48,6 +48,8 @@ function rendenWindow(){
     name2.style.color = data.player2.playerColor;
     score1.style.color = data.player1.playerColor;
     score2.style.color = data.player2.playerColor;
+    document.querySelector('html').style.setProperty(`--player1Color`,data.player1.playerColor);
+    document.querySelector('html').style.setProperty(`--player2Color`,data.player2.playerColor);
 
 }
 
@@ -89,6 +91,8 @@ function changeColor(){
     this.value == '#ffffff' ? playerColor.style.background = '#000' : playerColor.style.background = '' ;
     playerColor.style.color = this.value;
     playerScore.style.color = this.value;
+
+    document.querySelector('html').style.setProperty(`--player${dataChange}Color`,this.value);
 
     data[`player${dataChange}`].playerColor = this.value;
     localStorage.setItem('game',JSON.stringify(data));
