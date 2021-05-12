@@ -40,7 +40,6 @@ function rendenWindow(){
     let score1 = document.querySelector('.player1 .layout .score');
     let score2 = document.querySelector('.player2 .layout .score');
 
-
     name1.textContent = data.player1.playerName;
     name2.textContent = data.player2.playerName;
     color1.value = data.player1.playerColor;
