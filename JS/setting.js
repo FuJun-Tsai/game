@@ -32,22 +32,24 @@ let colorBtn = [...document.querySelectorAll('.player .layout .color')];
 main.style.paddingTop = headerHeight + 'px';
 
 function rendenWindow(){
-    console.log(data);
-    let name1 = document.querySelector('.player1 .name');
-    let name2 = document.querySelector('.player2 .name');
-    let color1 = document.querySelector('.player1 .color');
-    let color2 = document.querySelector('.player2 .color');
-    let score1 = document.querySelector('.player1 .layout .score');
-    let score2 = document.querySelector('.player2 .layout .score');
 
-    name1.textContent = data.player1.playerName;
-    name2.textContent = data.player2.playerName;
-    color1.value = data.player1.playerColor;
-    color2.value = data.player2.playerColor;
-    name1.style.color = data.player1.playerColor;
-    name2.style.color = data.player2.playerColor;
-    score1.style.color = data.player1.playerColor;
-    score2.style.color = data.player2.playerColor;
+    let rendenName = document.querySelectorAll('.player .name');
+    let rendenColor = document.querySelectorAll('.player .color');
+    let rendenScore = document.querySelectorAll('.player .layout .score');
+
+    rendenName.forEach( (item,index) => {
+        item.textContent = data[`player${index+1}`].playerName;
+        item.style.colr = data[`player${index+1}`].playerColor;
+    });
+
+    rendenColor.forEach( (item,index) => {
+        item.value = data[`player${index+1}`].playerColor;
+    });
+
+    rendenScore.forEach( (item,index) => {
+        item.style.color = data[`player${index+1}`].playerColor;
+    });
+
     document.querySelector('html').style.setProperty(`--player1Color`,data.player1.playerColor);
     document.querySelector('html').style.setProperty(`--player2Color`,data.player2.playerColor);
 
@@ -104,7 +106,6 @@ function rendenTable(){
     totalLine = (Math.pow(side,2)+side)*2;
     scores = [0,0];
     scoresBar.forEach(item=>{
-        console.log(item)
         item.textContent = '0'
     });
     game.innerHTML = '';
@@ -165,9 +166,10 @@ function rendenTable(){
     lines.forEach( line => {
         line.addEventListener('click',lineHandler);
     });
+
+    notice();
 }
 
-//////////////////////////////////////////////////////
 function lineHandler(){
     this.classList.add('selected');
     this.removeEventListener('click',lineHandler);
@@ -189,6 +191,7 @@ function lineHandler(){
     if (totalLine == 0){
         scores[0] > scores[1] ? alert('player1 WIN!!') : scores[0] < scores[1] ? alert('player2 WIN!!') : alert('WOW TIE!! play again?') ;
     }
+    notice();
 
 };
 
@@ -264,7 +267,13 @@ function boxWrite(arr){
 
 };
 
-//////////////////////////////////////////////////////
+function notice(){
+    let notice = document.querySelector('.notice'); 
+    notice.innerText = `${data[`player${turn+1}`].playerName} Draw!!`;
+    notice.classList.remove(`player1`);
+    notice.classList.remove(`player2`);
+    notice.classList.add(`player${turn+1}`);
+}
 
 renden.forEach( item => {
     item.addEventListener('click',rendenTable);

@@ -43,7 +43,10 @@ header{
     }
 }
 
+
 .players{
+    position: fixed;
+    width: 100%;
     .info{
         width: 100%;
         display: flex;
@@ -163,4 +166,8 @@ header{
         }
     }
 
+}
+
+.notice{
+    text-align: center;
 }

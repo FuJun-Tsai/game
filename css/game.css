@@ -34,6 +34,11 @@ header h1 {
   text-shadow: -1px -1px 0px #000, 1px 1px 0px #000, 0px 0px 5px #fff, 0px 0px 10px #fff, 0px 0px 20px #fff, 0px 0px 40px #fff, 0px 0px 80px #fff;
 }
 
+.players {
+  position: fixed;
+  width: 100%;
+}
+
 .players .info {
   width: 100%;
   display: -webkit-box;
@@ -167,5 +172,9 @@ header h1 {
 
 .game .line.selected > div {
   background: black;
+}
+
+.notice {
+  text-align: center;
 }
 /*# sourceMappingURL=game.css.map */
