@@ -18,6 +18,22 @@ $linewidth : 4px;
     color: var(--player2Color);
 }
 
+.x5{
+    @media (max-width:385px) {
+        display: none;
+    }
+}
+.x6{
+    @media (max-width:455px) {
+        display: none;
+    }
+}
+.x7{
+    @media (max-width:520px) {
+        display: none;
+    }
+}
+
 body{
     margin: 0;
 }

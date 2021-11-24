@@ -21,7 +21,7 @@ let scoresBar = document.querySelectorAll('.player .layout .score');
 let scores = [0,0];
 let continuous = false;
 
-let game = document.querySelector('.game .container .row');
+let game = document.querySelector('.game .row');
 let renden = document.querySelectorAll('.gameset button');
 let html = '';
 let totalLine = 0;
@@ -56,7 +56,6 @@ function rendenWindow(){
 }
 
 rendenWindow();
-
 
 function changeName(){
     let playerName = this.parentElement.querySelector('.name');
