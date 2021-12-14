@@ -35,7 +35,6 @@ function rendenWindow(){
 
     let rendenName = document.querySelectorAll('.player .name');
     let rendenColor = document.querySelectorAll('.player .color');
-    let rendenScore = document.querySelectorAll('.player .layout .score');
 
     rendenName.forEach( (item,index) => {
         item.textContent = data[`player${index+1}`].playerName;
@@ -46,24 +45,15 @@ function rendenWindow(){
         item.value = data[`player${index+1}`].playerColor;
     });
 
-    rendenScore.forEach( (item,index) => {
-        item.style.color = data[`player${index+1}`].playerColor;
-    });
-
     document.querySelector('html').style.setProperty(`--player1Color`,data.player1.playerColor);
     document.querySelector('html').style.setProperty(`--player2Color`,data.player2.playerColor);
 
 }
 
-rendenWindow();
-
 function changeName(){
     let playerName = this.parentElement.querySelector('.name');
     let inputName = this.parentElement.querySelector('.changename');
     let dataChange = this.dataset.change;
-
-    console.log(dataChange);
-    console.log(data);
 
     if(this.dataset.status=='0'){
         playerName.style.display = 'none';
@@ -71,13 +61,12 @@ function changeName(){
         inputName.value = playerName.innerText;
         this.dataset.status = '1';
         this.innerText = '確認';
-        
     }else{
         playerName.style.display = 'inline';
         inputName.style.display = 'none';
         playerName.innerText = inputName.value;
         this.dataset.status = '0';
-        this.innerText = '修改';
+        this.innerText = '改名';
 
         data[`player${dataChange}`].playerName = inputName.value;
         localStorage.setItem('game',JSON.stringify(data));
@@ -85,14 +74,8 @@ function changeName(){
 }
 
 function changeColor(){
-    let playerColor = this.parentElement.parentElement.querySelector('.name');
-    let playerScore = this.parentElement.querySelector('.score');
     let dataChange = this.dataset.change;
-
-    this.value == '#ffffff' ? playerColor.style.background = '#000' : playerColor.style.background = '' ;
-    playerColor.style.color = this.value;
-    playerScore.style.color = this.value;
-
+    
     document.querySelector('html').style.setProperty(`--player${dataChange}Color`,this.value);
 
     data[`player${dataChange}`].playerColor = this.value;
@@ -130,7 +113,6 @@ function rendenTable(){
                     <div></div>
                 </div>
             `;
-
             if(i==side-1){
                 item.innerHTML+= `
                 <div class="doc"></div>
@@ -149,7 +131,6 @@ function rendenTable(){
                     <p></p>
                 </div>
             `;
-
             if(i==side-1){
                 item.innerHTML+= `
                 <div class="line" data-row="${1+index*2}" data-num="${i+1}">
@@ -173,8 +154,8 @@ function lineHandler(){
     this.classList.add('selected');
     this.removeEventListener('click',lineHandler);
 
-    let row = parseInt(this.dataset.row);
-    let num = parseInt(this.dataset.num);
+    let row = +this.dataset.row;
+    let num = +this.dataset.num;
     let section = this.parentElement.className;
     continuous = false;
 
@@ -188,7 +169,7 @@ function lineHandler(){
     totalLine-=1;
 
     if (totalLine == 0){
-        scores[0] > scores[1] ? alert('player1 WIN!!') : scores[0] < scores[1] ? alert('player2 WIN!!') : alert('WOW TIE!! play again?') ;
+        scores[0] > scores[1] ? alert(`${data.player1.playerName} WIN!!`) : scores[0] < scores[1] ? alert(`${data.player1.playerName} WIN!!`) : alert('WOW TIE!! play again?') ;
     }
     notice();
 
@@ -199,71 +180,52 @@ function boxJudge(row,num,section){
     let condition2 = [false,false,false,"target"];
 
     if(section === 'boxs'){
-
         if(num!==0){
-
             condition1 = [
                 document.querySelector(`[data-row="${row}"][data-num="${num-1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row-1}"][data-num="${num-1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row+1}"][data-num="${num-1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-box="${(row-1)/2}${num-1}"]`)
             ];
-
-            
         };
-
         if(num!==side){
-
             condition2 = [
                 document.querySelector(`[data-row="${row}"][data-num="${num+1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row+1}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row-1}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-box="${(row-1)/2}${num}"]`)
             ];
-
         };
-
     }else{
-
         if(row!==0){
-
             condition1 = [
                 document.querySelector(`[data-row="${row-2}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row-1}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row-1}"][data-num="${num+1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-box="${row/2-1}${num}"]`)
             ];
-
         };
-
         if(row!==side*2){
-
             condition2 = [
                 document.querySelector(`[data-row="${row+1}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row+1}"][data-num="${num+1}"]`).classList.contains('selected'),
                 document.querySelector(`[data-row="${row+2}"][data-num="${num}"]`).classList.contains('selected'),
                 document.querySelector(`[data-box="${row/2}${num}"]`)
             ];
-
         };
-
     };
-
     boxWrite(condition1);
     boxWrite(condition2);
-
 };
 
 function boxWrite(arr){
     let all = arr[0] && arr[1] && arr[2];
-    
     if (all) {
         arr[3].innerHTML = `<p class="player${turn+1}">${player[turn]}</p>`;
         continuous = true;
         scores[turn]+=1;
         scoresBar[turn].innerText = scores[turn];
     };
-
 };
 
 function notice(){
@@ -272,7 +234,9 @@ function notice(){
     notice.classList.remove(`player1`);
     notice.classList.remove(`player2`);
     notice.classList.add(`player${turn+1}`);
-}
+};
+
+rendenWindow();
 
 renden.forEach( item => {
     item.addEventListener('click',rendenTable);
@@ -283,6 +247,5 @@ nameBtn.forEach( item => {
 });
 
 colorBtn.forEach( item => {
-    item.addEventListener('change',changeColor);
     item.addEventListener('input',changeColor);
 })
